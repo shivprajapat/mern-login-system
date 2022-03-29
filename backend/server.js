@@ -1,8 +1,12 @@
-const express = require('express');
-const dotenv = require('dotenv').config()
+const express = require("express");
+const dotenv = require("dotenv").config();
 
-const port =process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
-const app= express()
+const app = express();
 
-app.listen(port,()=>console.log(`server started on port http://localhost:${port}`))
+app.use("/api/goals", require("./routes/goalRoutes"));
+
+app.listen(port, () =>
+  console.log(`server started on port http://localhost:${port}`)
+);

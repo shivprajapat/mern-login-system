@@ -13,7 +13,10 @@ const getGoals = (req, res) => res.status(200).json({ message: "Get goals" });
  **/
 
 const setGoal = (req, res) => {
-  console.log(req.body);
+  if (!req.body.text) {
+    res.status(400);
+    throw new Error("please add a text field");
+  }
   res.status(200).json({ message: "Get goals" });
 };
 

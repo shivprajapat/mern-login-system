@@ -1,4 +1,7 @@
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
+const User = require("../models/userModel");
 
 /**
  ** @Description Register new user
@@ -6,7 +9,14 @@ const asyncHandler = require("express-async-handler");
  ** @Access Public
  **/
 const registerUser = asyncHandler(async (req, res) => {
-  res.json({ message: "Register User" });
+  const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    res.status(400);
+    throw new Error("Please add all fields");
+  }
+
+  res.json({message:"Register user"})
 });
 
 /**
